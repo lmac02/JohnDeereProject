@@ -70,7 +70,7 @@ YOLO_filename = '/content/drive/My Drive/Colab/data_train.txt'
 #YOLO_classname = os.path.join(Model_Folder, "data_classes.txt")
 YOLO_classname = '/content/drive/My Drive/Colab/data_classes.txt'
 
-log_dir = '/content/TrainYourOwnYOLO/Data/Model_Weights'
+log_dir = '/content/JohnDeereProject/TrainYourOwnYOLO/Data/Model_Weights'
 anchors_path = os.path.join(keras_path, "model_data", "yolo_anchors.txt")
 #weights_path = os.path.join(keras_path, "yolo.h5")
 weights_path = '/content/drive/My Drive/Colab/trained_weights_final.h5'
@@ -202,7 +202,7 @@ if __name__ == "__main__":
 
     val_split = FLAGS.val_split
     with open(FLAGS.annotation_file) as f:
-        lines = f.readlines()
+        paths = f.readlines()
 
     # This step makes sure that the path names correspond to the local machine
     # This is important if annotation and training are done on different machines (e.g. training on AWS)

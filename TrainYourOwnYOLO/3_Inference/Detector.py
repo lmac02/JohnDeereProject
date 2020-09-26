@@ -46,7 +46,7 @@ detection_results_file = "/content/drive/My Drive/Colab/Results/Detection_Result
 #model_folder = os.path.join(data_folder, "Model_Weights")
 #model_weights = os.path.join(model_folder, "trained_weights_final.h5")
 #model_classes = os.path.join(model_folder, "data_classes.txt")
-model_weights = '/content/TrainYourOwnYOLO/Data/Model_Weights/trained_weights_final.h5'
+model_weights = '/content/JohnDeereProject/TrainYourOwnYOLO/Data/Model_Weights/trained_weights_final.h5'
 model_classes = '/content/drive/My Drive/Colab/data_classes.txt'
 
 anchors_path = os.path.join(src_path, "keras_yolo3", "model_data", "yolo_anchors.txt")
