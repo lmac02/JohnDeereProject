@@ -299,7 +299,7 @@ if __name__ == "__main__":
             ),
             steps_per_epoch=max(1, num_train // batch_size),
             validation_data=data_generator_wrapper(
-                lines[num_train:], batch_size, input_shape, anchors, num_classes
+                lines[num_train:num_test], batch_size, input_shape, anchors, num_classes
             ),
             validation_steps=max(1, num_val // batch_size),
             epochs=epoch1 + epoch2,
