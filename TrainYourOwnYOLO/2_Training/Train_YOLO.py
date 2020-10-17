@@ -122,8 +122,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "--val_split",
         type=float,
-        default=0.1,
-        help="Percentage of training set to be used for validation. Default is 10%.",
+        default=0.2,
+        help="Percentage of training set to be used for validation. Default is 20%.",
     )
     parser.add_argument(
         "--is_tiny",
@@ -211,10 +211,20 @@ if __name__ == "__main__":
     lines = []
     for file in paths:
       lines.append(Image_Folder + ntpath.basename(file))
-      
+    
     np.random.shuffle(lines)
     num_val = int(len(lines) * val_split)
-    num_train = len(lines) - num_val
+    num_train = len(lines) - 2 * num_val
+    num_test = len(lines) - num_val
+
+    shutil.rmtree('/content/drive/My Drive/Colab/TestingData/')
+    os.mkdir('/content/drive/My Drive/Colab/TestingData/')
+
+    for i in range(num_val):
+      line = lines[num_test+i]
+      line = ntpath.basename(line)
+      line = line.split()[0]
+      shutil.copyfile('/content/drive/My Drive/Colab/TrainingData/'+line, '/content/drive/My Drive/Colab/TestingData/'+line)
 
     # Train with frozen layers first, to get a stable loss.
     # Adjust num epochs to your dataset. This step is enough to obtain a decent model.
