@@ -57,17 +57,23 @@ def get_random_data(
     # This type of splitting makes sure that it is compatible with spaces in folder names
     # We split at the first space that is followed by a number
     tmp_split = re.split("( \d)", annotation_line, maxsplit=1)
+    tmp_split[0] = tmp_split[0].strip('\n')
     if len(tmp_split) > 2:
         line = tmp_split[0], tmp_split[1] + tmp_split[2]
     else:
         line = tmp_split
     # line[0] contains the filename
+    
     image = Image.open(line[0])
     # The rest of the line includes bounding boxes
-    line = line[1].split(" ")
+    if len(line) > 1:
+      line = line[1].split(" ")
     iw, ih = image.size
     h, w = input_shape
-    box = np.array([np.array(list(map(int, box.split(",")))) for box in line[1:]])
+    if len(line) > 1:
+      box = np.array([np.array(list(map(int, box.split(",")))) for box in line[1:]])
+    else:
+      box = []
 
     if not random:
         # resize image
